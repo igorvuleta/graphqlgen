@@ -1,0 +1,8 @@
+query GetProducts {
+  products {
+    productName
+    unitPrice
+    discontinued
+    quantityPerUnit
+  }
+}

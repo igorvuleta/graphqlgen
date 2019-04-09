@@ -1,0 +1,11 @@
+<div *ngIf="loading">
+  Loading...
+</div>
+<div *ngIf="error">
+  Error :(
+</div>
+<div *ngIf="suppliers">
+  <div *ngFor="let supplier of suppliers | async">
+    <p>{{supplier.companyName}}: {{supplier.adress}} {{supplier.coutry}} {{supplier.city}}</p>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+query GetSuppliers {
+  suppliers {
+    companyName
+    address
+    country
+    city
+  }
+}
