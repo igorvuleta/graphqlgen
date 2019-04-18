@@ -95,6 +95,7 @@ export type NorthWindMutationProductInputArgs = {
 
 export type NorthWindQuery = {
   categories?: Maybe<Array<Maybe<CategoriesType>>>;
+  category?: Maybe<CategoriesType>;
   customerDemographics?: Maybe<Array<Maybe<CustomerDemographicsType>>>;
   customers?: Maybe<Array<Maybe<CustomersType>>>;
   customersDemo?: Maybe<Array<Maybe<CustomerCustomerDemoType>>>;
@@ -102,11 +103,25 @@ export type NorthWindQuery = {
   employeesTerritories?: Maybe<Array<Maybe<EmployeeTerritoriesType>>>;
   orderDetails?: Maybe<Array<Maybe<OrderDetailsType>>>;
   orders?: Maybe<Array<Maybe<OrdersType>>>;
+  product?: Maybe<ProductType>;
   products?: Maybe<Array<Maybe<ProductType>>>;
   regions?: Maybe<Array<Maybe<RegionType>>>;
   shippers?: Maybe<Array<Maybe<ShippersType>>>;
+  supplier?: Maybe<SupplierType>;
   suppliers?: Maybe<Array<Maybe<SupplierType>>>;
   territories?: Maybe<Array<Maybe<TerritoriesType>>>;
+};
+
+export type NorthWindQueryCategoryArgs = {
+  id: Scalars["ID"];
+};
+
+export type NorthWindQueryProductArgs = {
+  id: Scalars["ID"];
+};
+
+export type NorthWindQuerySupplierArgs = {
+  id: Scalars["ID"];
 };
 
 export type OrderDetailsType = {
@@ -188,6 +203,24 @@ export type TerritoriesType = {
   territoryDescription: Scalars["String"];
   territoryId: Scalars["String"];
 };
+export type GetanythingbyidQueryVariables = {
+  id: Scalars["ID"];
+};
+
+export type GetanythingbyidQuery = { __typename?: "NorthWindQuery" } & {
+  product: Maybe<
+    { __typename?: "ProductType" } & Pick<
+      ProductType,
+      | "productId"
+      | "unitPrice"
+      | "unitsInStock"
+      | "unitsOnOrder"
+      | "quantityPerUnit"
+      | "discontinued"
+    >
+  >;
+};
+
 export type GetProductsTableQueryVariables = {};
 
 export type GetProductsTableQuery = { __typename?: "NorthWindQuery" } & {
@@ -256,6 +289,28 @@ import gql from "graphql-tag";
 import { Injectable } from "@angular/core";
 import * as Apollo from "apollo-angular";
 
+export const GetanythingbyidDocument = gql`
+  query getanythingbyid($id: ID!) {
+    product(id: $id) {
+      productId
+      unitPrice
+      unitsInStock
+      unitsOnOrder
+      quantityPerUnit
+      discontinued
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: "root"
+})
+export class GetanythingbyidGQL extends Apollo.Query<
+  GetanythingbyidQuery,
+  GetanythingbyidQueryVariables
+> {
+  document = GetanythingbyidDocument;
+}
 export const GetProductsTableDocument = gql`
   query GetProductsTable {
     products {

@@ -1,0 +1,11 @@
+query getanythingbyid($id: ID!) {
+  product(id: $id) {
+    productId
+    unitPrice
+    unitsInStock
+    unitsOnOrder
+    quantityPerUnit
+    discontinued
+    
+  }
+}
