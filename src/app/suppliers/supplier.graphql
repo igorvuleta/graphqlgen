@@ -4,5 +4,6 @@ query GetSuppliers {
     address
     country
     city
+    companyName
   }
 }

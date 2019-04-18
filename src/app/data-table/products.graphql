@@ -1,12 +1,11 @@
-query GetProducts {
+query GetProductsTable {
   products {
+    productId
     productName
     unitPrice
     discontinued
-    unitPrice
     unitsInStock
     unitsOnOrder
-    discontinued
     
 
     

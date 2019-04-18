@@ -20,7 +20,7 @@ export class ProductsComponent implements OnInit {
   ngOnInit() {
     this.products = this.getProducts.watch().valueChanges.pipe(map(result => {
       this.loading = false; 
-      return result.data.products
+      return result.data.products;
     }));
   
     

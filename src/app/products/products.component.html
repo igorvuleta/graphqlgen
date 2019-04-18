@@ -6,6 +6,6 @@
 </div>
 <div *ngIf="products">
   <div *ngFor="let product of products | async">
-    <p>{{product.productName}}: {{product.discontinued}} {{product.unitPrice}} {{product.quantityPerUnit}}</p>
+    <p>{{product.productName}}: {{product.discontinued}} {{product.unitPrice}}</p>
   </div>
 </div>
