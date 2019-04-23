@@ -5,12 +5,12 @@
       <div fxLayout="column wrap" fxLayoutGap="40px">
         <div fxLayout="row wrap" fxFlex>
           <div fxFlex>Product name:</div>
-          <div fxFlex>{{ owner?.name }}</div>
+          <div fxFlex>{{ product.productName }}</div>
         </div>
 
         <div fxLayout="row wrap" fxFlex>
           <div fxFlex>Product price </div>
-          <div fxFlex>{{ owner?.dateOfBirth | date }}</div>
+          <div fxFlex>{{ product.unitPrice }}</div>
         </div>
       </div>
     </mat-card-content>

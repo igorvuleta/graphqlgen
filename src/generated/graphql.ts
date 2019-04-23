@@ -203,15 +203,16 @@ export type TerritoriesType = {
   territoryDescription: Scalars["String"];
   territoryId: Scalars["String"];
 };
-export type GetanythingbyidQueryVariables = {
+export type FindProductByIdQueryVariables = {
   id: Scalars["ID"];
 };
 
-export type GetanythingbyidQuery = { __typename?: "NorthWindQuery" } & {
+export type FindProductByIdQuery = { __typename?: "NorthWindQuery" } & {
   product: Maybe<
     { __typename?: "ProductType" } & Pick<
       ProductType,
       | "productId"
+      | "productName"
       | "unitPrice"
       | "unitsInStock"
       | "unitsOnOrder"
@@ -289,10 +290,11 @@ import gql from "graphql-tag";
 import { Injectable } from "@angular/core";
 import * as Apollo from "apollo-angular";
 
-export const GetanythingbyidDocument = gql`
-  query getanythingbyid($id: ID!) {
+export const FindProductByIdDocument = gql`
+  query FindProductById($id: ID!) {
     product(id: $id) {
       productId
+      productName
       unitPrice
       unitsInStock
       unitsOnOrder
@@ -305,11 +307,11 @@ export const GetanythingbyidDocument = gql`
 @Injectable({
   providedIn: "root"
 })
-export class GetanythingbyidGQL extends Apollo.Query<
-  GetanythingbyidQuery,
-  GetanythingbyidQueryVariables
+export class FindProductByIdGQL extends Apollo.Query<
+  FindProductByIdQuery,
+  FindProductByIdQueryVariables
 > {
-  document = GetanythingbyidDocument;
+  document = FindProductByIdDocument;
 }
 export const GetProductsTableDocument = gql`
   query GetProductsTable {

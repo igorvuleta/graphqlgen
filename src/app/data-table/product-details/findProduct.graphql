@@ -1,6 +1,7 @@
-query getanythingbyid($id: ID!) {
+query FindProductById($id: ID!) {
   product(id: $id) {
     productId
+    productName
     unitPrice
     unitsInStock
     unitsOnOrder

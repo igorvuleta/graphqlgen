@@ -1,13 +1,25 @@
 import { Component, OnInit } from "@angular/core";
 import { Product } from "./product";
-import { ActivatedRoute, ParamMap } from "@angular/router";
+import { FindProductByIdGQL } from './../../../generated/graphql';
+
+import { ActivatedRoute } from "@angular/router";
 import { Apollo, QueryRef } from 'apollo-angular';
-import { GetanythingbyidGQL } from './../../../generated/graphql';
-import { GetanythingbyidGQL } from 'src/generated/graphql';
-import { Subscription } from 'rxjs';
+import gql from 'graphql-tag';
 
 
-
+// const FindProductById = gql`
+//   query FindProductById($id: ID!) {
+//     product(id: $id) {
+//       productId
+//       productName
+//       unitPrice
+//       unitsInStock
+//       unitsOnOrder
+//       quantityPerUnit
+//       discontinued
+//     }
+//   }
+// `;
 @Component({
   selector: "app-product-details",
   templateUrl: "./product-details.component.html",
@@ -23,28 +35,36 @@ export class ProductDetailsComponent implements OnInit {
     quantityPerUnit: null,
     discontinued: null
   };
-
-  private querySubscription: Subscription;
+  private query: QueryRef<any>;
+  
   constructor(
     private route: ActivatedRoute,
-    private apollo: Apollo
+    private apollo: Apollo,
+    private getProductById: FindProductByIdGQL
     
   ) {}
 
   ngOnInit() {
-    // this.route.paramMap.pipe(
-    // map((params: ParamMap) => params.get('id')),
-    // map(productId => parseInt(productId, 10)),
-    // switchMap(productId => this.service.findOne(productId),
-    //  subscribeOn (response => this.product = response.product)));
+    
     this.getDetails();
   }
 
   getDetails() {
-   const id = this.route.snapshot.params.id;
-   this.querySubscription = this.apollo.watchQuery({
-      query: getallbyId,
-      variables: { productId: id}
+   const id: string = this.route.snapshot.params.id;
+   this.query = this.apollo.watchQuery({
+     query: this.getProductById,
+     variables : {id: id}
+
    });
-  };
+
+   this.query.valueChanges.subscribe(res => {
+     this.product = res.data.product;
+     console.log(this.product);
+   })
+   
+   
+
+ 
+   
+   };
 }
