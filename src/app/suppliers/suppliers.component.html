@@ -1,11 +1,39 @@
-<div *ngIf="loading">
-  Loading...
-</div>
-<div *ngIf="error">
-  Error :(
-</div>
-<div *ngIf="suppliers">
-  <div *ngFor="let supplier of suppliers | async">
-    <p>{{supplier.companyName}}: {{supplier.adress}} {{supplier.coutry}} {{supplier.city}}</p>
-  </div>
-</div>
+<table
+  mat-table
+  [dataSource]="suppliers"
+  class="mat-elevation-z8 full-width-table"
+>
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="ID">
+    <th mat-header-cell *matHeaderCellDef>ID</th>
+    <td mat-cell *matCellDef="let supplier">{{ product.productId }}</td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="Product Name">
+    <th mat-header-cell *matHeaderCellDef>Product Name</th>
+    <td mat-cell *matCellDef="let supplier">{{ product.productName }}</td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="Unit Price">
+    <th mat-header-cell *matHeaderCellDef>Unit Price</th>
+    <td mat-cell *matCellDef="let supplier">{{ product.unitPrice }}</td>
+  </ng-container>
+
+  
+  <ng-container matColumnDef="Details">
+    <th mat-header-cell *matHeaderCellDef>Details</th>
+    <td mat-cell *matCellDef="let supplier" (click)="redirectToDetails(product.productId)">
+      <button mat-icon-button color="primary">
+        <mat-icon class="mat-18">info</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

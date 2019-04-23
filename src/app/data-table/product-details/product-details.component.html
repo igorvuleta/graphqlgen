@@ -4,13 +4,33 @@
     <mat-card-content>
       <div fxLayout="column wrap" fxLayoutGap="40px">
         <div fxLayout="row wrap" fxFlex>
-          <div fxFlex>Product name:</div>
-          <div fxFlex>{{ product.productName }}</div>
+          <div fxFlex>Product ID:</div>
+          <div fxFlex>{{ product.productId }}</div>
         </div>
 
         <div fxLayout="row wrap" fxFlex>
-          <div fxFlex>Product price </div>
+          <div fxFlex>Product Name: </div>
+          <div fxFlex>{{ product.productName }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Product price: </div>
           <div fxFlex>{{ product.unitPrice }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Product in stock: </div>
+          <div fxFlex>{{ product.unitsInStock }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Product on order: </div>
+          <div fxFlex>{{ product.unitsOnOrder }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Product quantitiy: </div>
+          <div fxFlex>{{ product.quantityPerUnit }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Product discontinued: </div>
+          <div fxFlex>{{ product.discontinued }}</div>
         </div>
       </div>
     </mat-card-content>

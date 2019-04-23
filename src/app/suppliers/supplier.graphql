@@ -1,9 +1,15 @@
 query GetSuppliers {
   suppliers {
+    supplierId
     companyName
     address
     country
     city
-    companyName
+    contactTitle
+    fax
+    homePage
+    postalCode
+    region
+
   }
 }

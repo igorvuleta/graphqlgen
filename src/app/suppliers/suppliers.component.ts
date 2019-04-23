@@ -13,15 +13,16 @@ export class SuppliersComponent implements OnInit {
   suppliers: Observable<any[]>;
   loading = true;
   error: any;
+  displayedColumns: string[] = ['ID', 'Company Name', 'City','Country', 'Details'];
 
 
 
   constructor(private getSuppliers: GetSuppliersGQL) { }
 
   ngOnInit() {
-    this.suppliers = this.getSuppliers.watch().valueChanges.pipe(map(result => {
+    this.suppliers = this.getSuppliers.watch().valueChanges.pipe(map(supplier => {
       this.loading = false;
-      return result.data.suppliers;
+      return supplier.data.suppliers;
     } ))
   }
 

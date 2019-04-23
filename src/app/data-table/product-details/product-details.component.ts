@@ -1,25 +1,24 @@
 import { Component, OnInit } from "@angular/core";
 import { Product } from "./product";
-import { FindProductByIdGQL } from './../../../generated/graphql';
-
 import { ActivatedRoute } from "@angular/router";
 import { Apollo, QueryRef } from 'apollo-angular';
 import gql from 'graphql-tag';
+import { Observable } from 'apollo-link';
 
 
-// const FindProductById = gql`
-//   query FindProductById($id: ID!) {
-//     product(id: $id) {
-//       productId
-//       productName
-//       unitPrice
-//       unitsInStock
-//       unitsOnOrder
-//       quantityPerUnit
-//       discontinued
-//     }
-//   }
-// `;
+const FindProductById = gql`
+  query FindProductById($id: ID!) {
+    product(id: $id) {
+      productId
+      productName
+      unitPrice
+      unitsInStock
+      unitsOnOrder
+      quantityPerUnit
+      discontinued
+    }
+  }
+`;
 @Component({
   selector: "app-product-details",
   templateUrl: "./product-details.component.html",
@@ -39,8 +38,7 @@ export class ProductDetailsComponent implements OnInit {
   
   constructor(
     private route: ActivatedRoute,
-    private apollo: Apollo,
-    private getProductById: FindProductByIdGQL
+    private apollo: Apollo
     
   ) {}
 
@@ -52,7 +50,7 @@ export class ProductDetailsComponent implements OnInit {
   getDetails() {
    const id: string = this.route.snapshot.params.id;
    this.query = this.apollo.watchQuery({
-     query: this.getProductById,
+     query: FindProductById,
      variables : {id: id}
 
    });

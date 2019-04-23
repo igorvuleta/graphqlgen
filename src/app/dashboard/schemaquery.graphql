@@ -1,0 +1,11 @@
+query GetSchema {
+  __schema {
+    queryType {
+      fields {
+        name
+        description
+      
+      }
+    }
+  }
+}

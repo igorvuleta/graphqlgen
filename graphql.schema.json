@@ -11,7 +11,7 @@
         "fields": [
           {
             "name": "categories",
-            "description": null,
+            "description": "This table holds all Categories and is in a relationship with products!",
             "args": [],
             "type": {
               "kind": "LIST",
@@ -50,7 +50,7 @@
           },
           {
             "name": "customerDemographics",
-            "description": null,
+            "description": "This table holds customer description and customer type id itßs related to the cutomer demo type!",
             "args": [],
             "type": {
               "kind": "LIST",
@@ -66,7 +66,7 @@
           },
           {
             "name": "customers",
-            "description": null,
+            "description": "This table holds all Customers records and its not related to any other tables!",
             "args": [],
             "type": {
               "kind": "LIST",
@@ -82,7 +82,7 @@
           },
           {
             "name": "customersDemo",
-            "description": null,
+            "description": "This table holds customer Id and customer type Id its related to the customers!",
             "args": [],
             "type": {
               "kind": "LIST",
@@ -98,7 +98,7 @@
           },
           {
             "name": "employees",
-            "description": null,
+            "description": "This table holds all records about employees and its not related to any other table!",
             "args": [],
             "type": {
               "kind": "LIST",
@@ -114,7 +114,7 @@
           },
           {
             "name": "employeesTerritories",
-            "description": null,
+            "description": "This table holds employee territories and it is related to the employee table!",
             "args": [],
             "type": {
               "kind": "LIST",
@@ -130,7 +130,7 @@
           },
           {
             "name": "orderDetails",
-            "description": null,
+            "description": "This table holds all order details, and is in a relationship with the products!",
             "args": [],
             "type": {
               "kind": "LIST",
@@ -146,7 +146,7 @@
           },
           {
             "name": "orders",
-            "description": null,
+            "description": "This table holds all orders and is in relationship with order details and customers tables!",
             "args": [],
             "type": {
               "kind": "LIST",
@@ -181,7 +181,7 @@
           },
           {
             "name": "products",
-            "description": null,
+            "description": "This table holds all products and product properties in relatioship with order details and suppliers!",
             "args": [],
             "type": {
               "kind": "LIST",
@@ -197,7 +197,7 @@
           },
           {
             "name": "regions",
-            "description": null,
+            "description": "this table is holds region descriptions and it is not related to any other table in the database!",
             "args": [],
             "type": {
               "kind": "LIST",
@@ -213,7 +213,7 @@
           },
           {
             "name": "shippers",
-            "description": null,
+            "description": "This table holds all shippers and is in none relationship to other tables!",
             "args": [],
             "type": {
               "kind": "LIST",
@@ -252,7 +252,7 @@
           },
           {
             "name": "suppliers",
-            "description": null,
+            "description": "This table holds all suppliers in a relationship with products!",
             "args": [],
             "type": {
               "kind": "LIST",
@@ -268,7 +268,7 @@
           },
           {
             "name": "territories",
-            "description": null,
+            "description": "Territories table holds the region and territories descriptions and it is realted to the region table!",
             "args": [],
             "type": {
               "kind": "LIST",

@@ -15,7 +15,7 @@ export class DataTableComponent implements OnInit {
   products: Observable<any[]>;
   loading = true;
   error: any;
-  displayedColumns: string[] = ['ID', 'Product Name','Discontinued', 'Unit Price', 'Units In Stock', 'Units On Order', 'Details'];
+  displayedColumns: string[] = ['ID', 'Product Name', 'Unit Price', 'Details'];
 
   
 
@@ -33,7 +33,7 @@ export class DataTableComponent implements OnInit {
    
   };
   public redirectToDetails = (productId: string) => {
-    let url : string =`/tableview/details/${productId}`;
+    let url : string =`/products/details/${productId}`;
     this.router.navigate([url]);
     console.log("did I navigate?");
   }

@@ -8,8 +8,8 @@ import { ProductDetailsComponent } from './data-table/product-details/product-de
 
 const routes: Routes = [
   {path:'dashboard', component:DashboardComponent},
-  {path:'tableview', component:DataTableComponent},
-  {path:'tableview/details/:id', component:ProductDetailsComponent}
+  {path:'products', component:DataTableComponent},
+  {path:'products/details/:id', component:ProductDetailsComponent}
 ];
 
 @NgModule({
