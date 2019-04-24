@@ -202,12 +202,12 @@ export type SupplierType = {
   contactName: Scalars["String"];
   contactTitle: Scalars["String"];
   country: Scalars["String"];
-  fax: Scalars["String"];
-  homePage: Scalars["String"];
+  fax?: Maybe<Scalars["String"]>;
+  homePage?: Maybe<Scalars["String"]>;
   phone: Scalars["String"];
   postalCode: Scalars["String"];
   products?: Maybe<Array<Maybe<ProductType>>>;
-  region: Scalars["String"];
+  region?: Maybe<Scalars["String"]>;
   supplierId?: Maybe<Scalars["ID"]>;
 };
 
@@ -393,6 +393,21 @@ export enum __TypeKind {
   /** Indicates this type is a non-null. `ofType` is a valid field. */
   NonNull = "NON_NULL"
 }
+export type GetCategoriesQueryVariables = {};
+
+export type GetCategoriesQuery = { __typename?: "NorthWindQuery" } & {
+  categories: Maybe<
+    Array<
+      Maybe<
+        { __typename?: "CategoriesType" } & Pick<
+          CategoriesType,
+          "categoryId" | "categoryName" | "description"
+        >
+      >
+    >
+  >;
+};
+
 export type GetSchemaQueryVariables = {};
 
 export type GetSchemaQuery = { __typename?: "NorthWindQuery" } & {
@@ -503,6 +518,25 @@ import gql from "graphql-tag";
 import { Injectable } from "@angular/core";
 import * as Apollo from "apollo-angular";
 
+export const GetCategoriesDocument = gql`
+  query getCategories {
+    categories {
+      categoryId
+      categoryName
+      description
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: "root"
+})
+export class GetCategoriesGQL extends Apollo.Query<
+  GetCategoriesQuery,
+  GetCategoriesQueryVariables
+> {
+  document = GetCategoriesDocument;
+}
 export const GetSchemaDocument = gql`
   query GetSchema {
     __schema {

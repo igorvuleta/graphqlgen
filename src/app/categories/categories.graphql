@@ -1,0 +1,12 @@
+
+
+query getCategories {
+  categories {
+    categoryId
+    categoryName
+    description
+
+  }
+}
+
+

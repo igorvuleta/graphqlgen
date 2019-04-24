@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { GetProductsGQL } from './../../generated/graphql';
+import { GetProductsGQL, ProductType } from './../../generated/graphql';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -18,9 +18,9 @@ export class ProductsComponent implements OnInit {
   constructor(private getProducts: GetProductsGQL) {}
 
   ngOnInit() {
-    this.products = this.getProducts.watch().valueChanges.pipe(map(result => {
+    this.products = this.getProducts.watch().valueChanges.pipe(map(products => {
       this.loading = false; 
-      return result.data.products;
+      return products.data.products;
     }));
   
     

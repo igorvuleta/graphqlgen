@@ -1,6 +1,6 @@
 <table
   mat-table
-  [dataSource]="suppliers"
+  [dataSource]="categories"
   class="mat-elevation-z8 full-width-table"
 >
   <!--- Note that these columns can be defined in any order.
@@ -9,28 +9,25 @@
   <!-- Position Column -->
   <ng-container matColumnDef="ID">
     <th mat-header-cell *matHeaderCellDef>ID</th>
-    <td mat-cell *matCellDef="let supplier">{{ supplier.supplierId }}</td>
+    <td mat-cell *matCellDef="let categorie">{{ categorie.categoryId }}</td>
   </ng-container>
 
   <!-- Name Column -->
-  <ng-container matColumnDef="Supplier Name">
-    <th mat-header-cell *matHeaderCellDef>Supplier Name</th>
-    <td mat-cell *matCellDef="let supplier">{{ supplier.companyName }}</td>
+  <ng-container matColumnDef="Category Name">
+    <th mat-header-cell *matHeaderCellDef>Category Name</th>
+    <td mat-cell *matCellDef="let categorie">{{ categorie.categoryName }}</td>
   </ng-container>
 
   <!-- Weight Column -->
-  <ng-container matColumnDef="Supplier Country">
-    <th mat-header-cell *matHeaderCellDef>Supplier Country</th>
-    <td mat-cell *matCellDef="let supplier">{{ supplier.country }}</td>
+  <ng-container matColumnDef="Description">
+    <th mat-header-cell *matHeaderCellDef>Description</th>
+    <td mat-cell *matCellDef="let categorie">{{ categorie.description }}</td>
   </ng-container>
-  <ng-container matColumnDef="Supplier City">
-    <th mat-header-cell *matHeaderCellDef>Supplier City</th>
-    <td mat-cell *matCellDef="let supplier">{{ supplier.city }}</td>
-  </ng-container>
+ 
 
   <ng-container matColumnDef="Details">
     <th mat-header-cell *matHeaderCellDef>Details</th>
-    <td mat-cell *matCellDef="let supplier">
+    <td mat-cell *matCellDef="let categorie">
       <button mat-icon-button color="primary">
         <mat-icon class="mat-18">info</mat-icon>
       </button>

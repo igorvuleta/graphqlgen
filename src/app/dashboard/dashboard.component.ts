@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { Router } from '@angular/router';
 import { Apollo, QueryRef } from 'apollo-angular';
 import { Observable } from 'rxjs';
@@ -53,7 +52,7 @@ export class DashboardComponent implements OnInit {
 
 
 
-  constructor(private breakpointObserver: BreakpointObserver, private router: Router, private apollo: Apollo) {}
+  constructor( private router: Router, private apollo: Apollo) {}
 
   ngOnInit() {
     this.query = this.apollo.watchQuery({

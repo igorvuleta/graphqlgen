@@ -13,6 +13,7 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DataTableComponent } from './data-table/data-table.component';
 import { ProductDetailsComponent } from './data-table/product-details/product-details.component';
+import { CategoriesComponent } from './categories/categories.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ProductDetailsComponent } from './data-table/product-details/product-de
     SuppliersComponent,
     DashboardComponent,
     DataTableComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    CategoriesComponent
   ],
   imports: [
     BrowserModule,
