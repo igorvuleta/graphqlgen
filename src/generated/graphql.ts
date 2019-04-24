@@ -408,6 +408,21 @@ export type GetCategoriesQuery = { __typename?: "NorthWindQuery" } & {
   >;
 };
 
+export type GetCustomersQueryVariables = {};
+
+export type GetCustomersQuery = { __typename?: "NorthWindQuery" } & {
+  customers: Maybe<
+    Array<
+      Maybe<
+        { __typename?: "CustomersType" } & Pick<
+          CustomersType,
+          "customerId" | "companyName" | "contactName" | "country" | "region"
+        >
+      >
+    >
+  >;
+};
+
 export type GetSchemaQueryVariables = {};
 
 export type GetSchemaQuery = { __typename?: "NorthWindQuery" } & {
@@ -536,6 +551,27 @@ export class GetCategoriesGQL extends Apollo.Query<
   GetCategoriesQueryVariables
 > {
   document = GetCategoriesDocument;
+}
+export const GetCustomersDocument = gql`
+  query getCustomers {
+    customers {
+      customerId
+      companyName
+      contactName
+      country
+      region
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: "root"
+})
+export class GetCustomersGQL extends Apollo.Query<
+  GetCustomersQuery,
+  GetCustomersQueryVariables
+> {
+  document = GetCustomersDocument;
 }
 export const GetSchemaDocument = gql`
   query GetSchema {

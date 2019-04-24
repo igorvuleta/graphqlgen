@@ -14,6 +14,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { DataTableComponent } from './data-table/data-table.component';
 import { ProductDetailsComponent } from './data-table/product-details/product-details.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { CustomersComponent } from './customers/customers.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CategoriesComponent } from './categories/categories.component';
     DashboardComponent,
     DataTableComponent,
     ProductDetailsComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    CustomersComponent
   ],
   imports: [
     BrowserModule,

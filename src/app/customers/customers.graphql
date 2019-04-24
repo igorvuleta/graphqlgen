@@ -1,0 +1,9 @@
+query getCustomers {
+  customers {
+    customerId
+    companyName
+    contactName
+    country
+    region
+  }
+}

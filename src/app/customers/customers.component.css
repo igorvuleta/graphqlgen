@@ -1,0 +1,7 @@
+.full-width-table {
+    width: 100%;
+  }
+  
+  tr:not(.example-expanded-row):hover {
+    background: #756577;
+  }

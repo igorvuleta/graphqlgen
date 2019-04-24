@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductDetailsComponent } from './data-table/product-details/product-details.component';
 import { SuppliersComponent } from './suppliers/suppliers.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { CustomersComponent } from './customers/customers.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path:'products', component:DataTableComponent},
   {path:'suppliers', component:SuppliersComponent},
   {path:'categories', component:CategoriesComponent},
+  {path:'customers', component:CustomersComponent},
   {path:'products/details/:id', component:ProductDetailsComponent}
 ];
 
