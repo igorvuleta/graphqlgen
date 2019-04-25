@@ -1,0 +1,9 @@
+query FindCategoryById($id:ID! ) {
+  category(id: $id) {
+    categoryId
+    categoryName
+    description
+    
+    
+  }
+}

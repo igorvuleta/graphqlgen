@@ -56,7 +56,7 @@ export type CustomersType = {
   fax: Scalars["String"];
   phone: Scalars["String"];
   postalCode: Scalars["String"];
-  region: Scalars["String"];
+  region?: Maybe<Scalars["String"]>;
 };
 
 export type EmployeesType = {
@@ -393,6 +393,19 @@ export enum __TypeKind {
   /** Indicates this type is a non-null. `ofType` is a valid field. */
   NonNull = "NON_NULL"
 }
+export type FindCategoryByIdQueryVariables = {
+  id: Scalars["ID"];
+};
+
+export type FindCategoryByIdQuery = { __typename?: "NorthWindQuery" } & {
+  category: Maybe<
+    { __typename?: "CategoriesType" } & Pick<
+      CategoriesType,
+      "categoryId" | "categoryName" | "description"
+    >
+  >;
+};
+
 export type GetCategoriesQueryVariables = {};
 
 export type GetCategoriesQuery = { __typename?: "NorthWindQuery" } & {
@@ -476,6 +489,51 @@ export type GetProductsTableQuery = { __typename?: "NorthWindQuery" } & {
   >;
 };
 
+export type GetEmployeesQueryVariables = {};
+
+export type GetEmployeesQuery = { __typename?: "NorthWindQuery" } & {
+  employees: Maybe<
+    Array<
+      Maybe<
+        { __typename?: "EmployeesType" } & Pick<
+          EmployeesType,
+          "employeeId" | "firstName" | "lastName" | "birthDate" | "notes"
+        >
+      >
+    >
+  >;
+};
+
+export type GetOrderDetailsQueryVariables = {};
+
+export type GetOrderDetailsQuery = { __typename?: "NorthWindQuery" } & {
+  orderDetails: Maybe<
+    Array<
+      Maybe<
+        { __typename?: "OrderDetailsType" } & Pick<
+          OrderDetailsType,
+          "orderId" | "discount" | "quantity" | "unitPrice"
+        >
+      >
+    >
+  >;
+};
+
+export type GetOrdersQueryVariables = {};
+
+export type GetOrdersQuery = { __typename?: "NorthWindQuery" } & {
+  orders: Maybe<
+    Array<
+      Maybe<
+        { __typename?: "OrdersType" } & Pick<
+          OrdersType,
+          "orderId" | "shipName" | "orderDate" | "requiredDate"
+        >
+      >
+    >
+  >;
+};
+
 export type GetProductsQueryVariables = {};
 
 export type GetProductsQuery = { __typename?: "NorthWindQuery" } & {
@@ -491,6 +549,36 @@ export type GetProductsQuery = { __typename?: "NorthWindQuery" } & {
           | "unitsInStock"
           | "unitsOnOrder"
           | "discontinued"
+        >
+      >
+    >
+  >;
+};
+
+export type GetRegionsQueryVariables = {};
+
+export type GetRegionsQuery = { __typename?: "NorthWindQuery" } & {
+  regions: Maybe<
+    Array<
+      Maybe<
+        { __typename?: "RegionType" } & Pick<
+          RegionType,
+          "regionId" | "regionDescription"
+        >
+      >
+    >
+  >;
+};
+
+export type GetShippersQueryVariables = {};
+
+export type GetShippersQuery = { __typename?: "NorthWindQuery" } & {
+  shippers: Maybe<
+    Array<
+      Maybe<
+        { __typename?: "ShippersType" } & Pick<
+          ShippersType,
+          "shipperId" | "companyName" | "phone"
         >
       >
     >
@@ -529,10 +617,44 @@ export type GetSuppliersQuery = { __typename?: "NorthWindQuery" } & {
   >;
 };
 
+export type GetTerritoriesQueryVariables = {};
+
+export type GetTerritoriesQuery = { __typename?: "NorthWindQuery" } & {
+  territories: Maybe<
+    Array<
+      Maybe<
+        { __typename?: "TerritoriesType" } & Pick<
+          TerritoriesType,
+          "territoryId" | "territoryDescription"
+        >
+      >
+    >
+  >;
+};
+
 import gql from "graphql-tag";
 import { Injectable } from "@angular/core";
 import * as Apollo from "apollo-angular";
 
+export const FindCategoryByIdDocument = gql`
+  query FindCategoryById($id: ID!) {
+    category(id: $id) {
+      categoryId
+      categoryName
+      description
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: "root"
+})
+export class FindCategoryByIdGQL extends Apollo.Query<
+  FindCategoryByIdQuery,
+  FindCategoryByIdQueryVariables
+> {
+  document = FindCategoryByIdDocument;
+}
 export const GetCategoriesDocument = gql`
   query getCategories {
     categories {
@@ -640,6 +762,67 @@ export class GetProductsTableGQL extends Apollo.Query<
 > {
   document = GetProductsTableDocument;
 }
+export const GetEmployeesDocument = gql`
+  query GetEmployees {
+    employees {
+      employeeId
+      firstName
+      lastName
+      birthDate
+      notes
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: "root"
+})
+export class GetEmployeesGQL extends Apollo.Query<
+  GetEmployeesQuery,
+  GetEmployeesQueryVariables
+> {
+  document = GetEmployeesDocument;
+}
+export const GetOrderDetailsDocument = gql`
+  query GetOrderDetails {
+    orderDetails {
+      orderId
+      discount
+      quantity
+      unitPrice
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: "root"
+})
+export class GetOrderDetailsGQL extends Apollo.Query<
+  GetOrderDetailsQuery,
+  GetOrderDetailsQueryVariables
+> {
+  document = GetOrderDetailsDocument;
+}
+export const GetOrdersDocument = gql`
+  query getOrders {
+    orders {
+      orderId
+      shipName
+      orderDate
+      requiredDate
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: "root"
+})
+export class GetOrdersGQL extends Apollo.Query<
+  GetOrdersQuery,
+  GetOrdersQueryVariables
+> {
+  document = GetOrdersDocument;
+}
 export const GetProductsDocument = gql`
   query GetProducts {
     products {
@@ -662,6 +845,43 @@ export class GetProductsGQL extends Apollo.Query<
   GetProductsQueryVariables
 > {
   document = GetProductsDocument;
+}
+export const GetRegionsDocument = gql`
+  query GetRegions {
+    regions {
+      regionId
+      regionDescription
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: "root"
+})
+export class GetRegionsGQL extends Apollo.Query<
+  GetRegionsQuery,
+  GetRegionsQueryVariables
+> {
+  document = GetRegionsDocument;
+}
+export const GetShippersDocument = gql`
+  query GetShippers {
+    shippers {
+      shipperId
+      companyName
+      phone
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: "root"
+})
+export class GetShippersGQL extends Apollo.Query<
+  GetShippersQuery,
+  GetShippersQueryVariables
+> {
+  document = GetShippersDocument;
 }
 export const GetSupplierCityDocument = gql`
   query GetSupplierCity {
@@ -705,4 +925,22 @@ export class GetSuppliersGQL extends Apollo.Query<
   GetSuppliersQueryVariables
 > {
   document = GetSuppliersDocument;
+}
+export const GetTerritoriesDocument = gql`
+  query GetTerritories {
+    territories {
+      territoryId
+      territoryDescription
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: "root"
+})
+export class GetTerritoriesGQL extends Apollo.Query<
+  GetTerritoriesQuery,
+  GetTerritoriesQueryVariables
+> {
+  document = GetTerritoriesDocument;
 }

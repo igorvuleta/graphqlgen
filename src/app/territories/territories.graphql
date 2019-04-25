@@ -1,0 +1,6 @@
+query GetTerritories {
+    territories {
+    territoryId
+    territoryDescription
+  }
+}

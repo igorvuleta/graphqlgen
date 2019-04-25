@@ -1,0 +1,9 @@
+query getOrders {
+    orders {
+    orderId
+    shipName
+    orderDate
+    requiredDate
+    
+  }
+}

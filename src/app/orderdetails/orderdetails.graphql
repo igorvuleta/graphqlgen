@@ -1,0 +1,8 @@
+query GetOrderDetails {
+    orderDetails {
+    orderId
+    discount
+   quantity
+    unitPrice
+  }
+}

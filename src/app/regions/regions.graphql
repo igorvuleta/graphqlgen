@@ -1,0 +1,6 @@
+query GetRegions {
+    regions {
+    regionId
+    regionDescription
+  }
+}

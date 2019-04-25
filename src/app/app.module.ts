@@ -15,6 +15,13 @@ import { DataTableComponent } from './data-table/data-table.component';
 import { ProductDetailsComponent } from './data-table/product-details/product-details.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CustomersComponent } from './customers/customers.component';
+import { EmployeesComponent } from './employees/employees.component';
+import { OrderdetailsComponent } from './orderdetails/orderdetails.component';
+import { OrdersComponent } from './orders/orders.component';
+import { RegionsComponent } from './regions/regions.component';
+import { ShippersComponent } from './shippers/shippers.component';
+import { TerritoriesComponent } from './territories/territories.component';
+import { CategoriesDetailsComponent } from './categories/categories-details/categories-details.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +32,14 @@ import { CustomersComponent } from './customers/customers.component';
     DataTableComponent,
     ProductDetailsComponent,
     CategoriesComponent,
-    CustomersComponent
+    CustomersComponent,
+    EmployeesComponent,
+    OrderdetailsComponent,
+    OrdersComponent,
+    RegionsComponent,
+    ShippersComponent,
+    TerritoriesComponent,
+    CategoriesDetailsComponent
   ],
   imports: [
     BrowserModule,

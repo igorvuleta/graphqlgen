@@ -1,0 +1,10 @@
+query GetEmployees{
+    
+  employees {
+    employeeId
+    firstName
+    lastName
+    birthDate
+    notes
+  }
+}
