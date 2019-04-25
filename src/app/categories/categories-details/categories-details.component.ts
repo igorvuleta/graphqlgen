@@ -1,8 +1,22 @@
 import { Component, OnInit } from "@angular/core";
 import { Apollo, QueryRef } from "apollo-angular";
-import { FindCategoryByIdGQL } from "./../../../generated/graphql";
+
 import { ActivatedRoute } from "@angular/router";
+import { map } from "rxjs/operators";
+import { Observable } from "rxjs";
+import gql from 'graphql-tag';
 import { Category } from './category';
+
+export const FindCategoryById = gql`
+  query FindCategoryById($id: ID!) {
+    category(id: $id) {
+      categoryId
+      categoryName
+      description
+    }
+  }
+`;
+
 
 @Component({
   selector: "app-categories-details",
@@ -11,14 +25,15 @@ import { Category } from './category';
 })
 export class CategoriesDetailsComponent implements OnInit {
   category: Category = {
-    categoryId: null,
+    categoryId:'',
     categoryName:'',
-    description:'',
-  };
-
-  
+    description:''
+  }
   private query: QueryRef<any>;
-  constructor(private route: ActivatedRoute, private apollo: Apollo) {}
+  constructor(
+    private route: ActivatedRoute,
+    private apollo: Apollo
+  ) {}
 
   ngOnInit() {
     this.getDetails();
@@ -26,15 +41,14 @@ export class CategoriesDetailsComponent implements OnInit {
 
   getDetails() {
     const id: string = this.route.snapshot.params.id;
-    this.query = this.apollo.watchQuery({
-      query: FindCategoryByIdGQL,
-      variables : {id: id}
- 
-    });
-    this.query.valueChanges.subscribe(res => {
-      this.category = res.data.category;
-    })
+   this.query = this.apollo.watchQuery({
+     query: FindCategoryById,
+     variables : {id: id}
 
-    
+   });
+
+   this.query.valueChanges.subscribe(res => {
+     this.category = res.data.category;
+   })
   }
 }
