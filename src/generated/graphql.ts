@@ -97,6 +97,7 @@ export type NorthWindQuery = {
   /** This table holds all Categories and is in a relationship with products! */
   categories?: Maybe<Array<Maybe<CategoriesType>>>;
   category?: Maybe<CategoriesType>;
+  customer?: Maybe<CustomersType>;
   /** This table holds customer description and customer type id itßs related to the cutomer demo type! */
   customerDemographics?: Maybe<Array<Maybe<CustomerDemographicsType>>>;
   /** This table holds all Customers records and its not related to any other tables! */
@@ -126,6 +127,10 @@ export type NorthWindQuery = {
 };
 
 export type NorthWindQueryCategoryArgs = {
+  id: Scalars["ID"];
+};
+
+export type NorthWindQueryCustomerArgs = {
   id: Scalars["ID"];
 };
 
@@ -421,6 +426,29 @@ export type GetCategoriesQuery = { __typename?: "NorthWindQuery" } & {
   >;
 };
 
+export type FindCustomerPerIdQueryVariables = {
+  id: Scalars["ID"];
+};
+
+export type FindCustomerPerIdQuery = { __typename?: "NorthWindQuery" } & {
+  customer: Maybe<
+    { __typename?: "CustomersType" } & Pick<
+      CustomersType,
+      | "address"
+      | "city"
+      | "companyName"
+      | "contactTitle"
+      | "country"
+      | "customerId"
+      | "fax"
+      | "phone"
+      | "postalCode"
+      | "customerId"
+      | "region"
+    >
+  >;
+};
+
 export type GetCustomersQueryVariables = {};
 
 export type GetCustomersQuery = { __typename?: "NorthWindQuery" } & {
@@ -673,6 +701,33 @@ export class GetCategoriesGQL extends Apollo.Query<
   GetCategoriesQueryVariables
 > {
   document = GetCategoriesDocument;
+}
+export const FindCustomerPerIdDocument = gql`
+  query FindCustomerPerId($id: ID!) {
+    customer(id: $id) {
+      address
+      city
+      companyName
+      contactTitle
+      country
+      customerId
+      fax
+      phone
+      postalCode
+      customerId
+      region
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: "root"
+})
+export class FindCustomerPerIdGQL extends Apollo.Query<
+  FindCustomerPerIdQuery,
+  FindCustomerPerIdQueryVariables
+> {
+  document = FindCustomerPerIdDocument;
 }
 export const GetCustomersDocument = gql`
   query getCustomers {

@@ -14,6 +14,7 @@ import { RegionsComponent } from './regions/regions.component';
 import { ShippersComponent } from './shippers/shippers.component';
 import { TerritoriesComponent } from './territories/territories.component';
 import { CategoriesDetailsComponent } from './categories/categories-details/categories-details.component';
+import { CustomerdetailComponent } from './customers/customerdetail/customerdetail.component';
 
 
 const routes: Routes = [
@@ -29,7 +30,9 @@ const routes: Routes = [
   {path:'shippers', component:ShippersComponent},
   {path:'territories', component:TerritoriesComponent},
   {path:'products/details/:id', component:ProductDetailsComponent},
-  {path:'categories/details/:id', component:CategoriesDetailsComponent}
+  {path:'categories/details/:id', component:CategoriesDetailsComponent},
+  {path:'customers/details/:id', component:CustomerdetailComponent}
+
 ];
 
 @NgModule({

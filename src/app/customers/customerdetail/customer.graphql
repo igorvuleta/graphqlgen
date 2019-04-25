@@ -1,0 +1,15 @@
+query FindCustomerPerId($id: ID!) {
+  customer(id: $id) {
+    address
+    city
+    companyName
+    contactTitle
+    country
+    customerId
+    fax
+    phone
+    postalCode
+    customerId
+    region
+  }
+}

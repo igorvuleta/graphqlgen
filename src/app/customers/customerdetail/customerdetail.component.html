@@ -1,0 +1,49 @@
+<section fxLayout="row wrap" fxLayoutAlign="center center">
+  <mat-card fxFlex="500px" fxFlex.xs="100%">
+    <mat-card-title>Details for {{customer.companyName}}</mat-card-title>
+    <mat-card-content>
+      <div fxLayout="column wrap" fxLayoutGap="40px">
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Customer ID:</div>
+          <div fxFlex>{{ customer.customerId}}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Customer Name: </div>
+          <div fxFlex>{{ customer.companyName }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Customer Contact Title: </div>
+          <div fxFlex>{{ customer.contactTitle }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Customer Address </div>
+          <div fxFlex>{{ customer.address }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Customer Country: </div>
+          <div fxFlex>{{ customer.country }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Customer City: </div>
+          <div fxFlex>{{ customer.city }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Customer PostalCode: </div>
+          <div fxFlex>{{ customer.postalCode }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Customer Fax: </div>
+          <div fxFlex>{{ customer.fax }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Customer Phone: </div>
+          <div fxFlex>{{ customer.phone}}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Customer Region: </div>
+          <div fxFlex>{{ customer.region}}</div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</section>

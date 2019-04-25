@@ -22,6 +22,7 @@ import { RegionsComponent } from './regions/regions.component';
 import { ShippersComponent } from './shippers/shippers.component';
 import { TerritoriesComponent } from './territories/territories.component';
 import { CategoriesDetailsComponent } from './categories/categories-details/categories-details.component';
+import { CustomerdetailComponent } from './customers/customerdetail/customerdetail.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { CategoriesDetailsComponent } from './categories/categories-details/cate
     RegionsComponent,
     ShippersComponent,
     TerritoriesComponent,
-    CategoriesDetailsComponent
+    CategoriesDetailsComponent,
+    CustomerdetailComponent
   ],
   imports: [
     BrowserModule,
