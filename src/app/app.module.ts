@@ -23,6 +23,7 @@ import { ShippersComponent } from './shippers/shippers.component';
 import { TerritoriesComponent } from './territories/territories.component';
 import { CategoriesDetailsComponent } from './categories/categories-details/categories-details.component';
 import { CustomerdetailComponent } from './customers/customerdetail/customerdetail.component';
+import { EmployeedetailsComponent } from './employees/employeedetails/employeedetails.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { CustomerdetailComponent } from './customers/customerdetail/customerdeta
     ShippersComponent,
     TerritoriesComponent,
     CategoriesDetailsComponent,
-    CustomerdetailComponent
+    CustomerdetailComponent,
+    EmployeedetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,28 @@
+query FindEmployeePerId($id:ID! ) {
+  employee(id: $id) {
+    employeeId
+    title
+    titleOfCourtesy
+    firstName
+    lastName
+    birthDate
+    address
+    hireDate
+    reportsTo
+    homePhone
+    notes
+    city
+    postalCode
+    country
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  }
+}

@@ -1,0 +1,61 @@
+<section fxLayout="row wrap" fxLayoutAlign="center center">
+  <mat-card fxFlex="500px" fxFlex.xs="100%">
+    <mat-card-title>Details for {{employee.titleOfCourtesy}}</mat-card-title>
+    <mat-card-content>
+      <div fxLayout="column wrap" fxLayoutGap="40px">
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Employee ID:</div>
+          <div fxFlex>{{ employee.employeeId}}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Employee Title: </div>
+          <div fxFlex>{{ employee.title }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Employee TitleOfCourt.: </div>
+          <div fxFlex>{{ employee.titleOfCourtesy }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Employee Name </div>
+          <div fxFlex>{{ employee.firstName }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Employee Surname: </div>
+          <div fxFlex>{{ employee.lastName }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Employee Birthday: </div>
+          <div fxFlex>{{ employee.birthDate }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Employee Address: </div>
+          <div fxFlex>{{ employee.address }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Employee date hired: </div>
+          <div fxFlex>{{ employee.hireDate }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Employee notes: </div>
+          <div fxFlex>{{ employee.reportsTo}}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Employee Phone: </div>
+          <div fxFlex>{{ employee.homePhone}}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>City: </div>
+          <div fxFlex>{{ employee.city}}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>PostalCode: </div>
+          <div fxFlex>{{ employee.postalCode}}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>country: </div>
+          <div fxFlex>{{ employee.country}}</div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</section>

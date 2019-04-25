@@ -53,7 +53,7 @@ export type CustomersType = {
   contactTitle: Scalars["String"];
   country: Scalars["String"];
   customerId?: Maybe<Scalars["ID"]>;
-  fax: Scalars["String"];
+  fax?: Maybe<Scalars["String"]>;
   phone: Scalars["String"];
   postalCode: Scalars["String"];
   region?: Maybe<Scalars["String"]>;
@@ -104,6 +104,7 @@ export type NorthWindQuery = {
   customers?: Maybe<Array<Maybe<CustomersType>>>;
   /** This table holds customer Id and customer type Id its related to the customers! */
   customersDemo?: Maybe<Array<Maybe<CustomerCustomerDemoType>>>;
+  employee?: Maybe<EmployeesType>;
   /** This table holds all records about employees and its not related to any other table! */
   employees?: Maybe<Array<Maybe<EmployeesType>>>;
   /** This table holds employee territories and it is related to the employee table! */
@@ -131,6 +132,10 @@ export type NorthWindQueryCategoryArgs = {
 };
 
 export type NorthWindQueryCustomerArgs = {
+  id: Scalars["ID"];
+};
+
+export type NorthWindQueryEmployeeArgs = {
   id: Scalars["ID"];
 };
 
@@ -517,6 +522,32 @@ export type GetProductsTableQuery = { __typename?: "NorthWindQuery" } & {
   >;
 };
 
+export type FindEmployeePerIdQueryVariables = {
+  id: Scalars["ID"];
+};
+
+export type FindEmployeePerIdQuery = { __typename?: "NorthWindQuery" } & {
+  employee: Maybe<
+    { __typename?: "EmployeesType" } & Pick<
+      EmployeesType,
+      | "employeeId"
+      | "title"
+      | "titleOfCourtesy"
+      | "firstName"
+      | "lastName"
+      | "birthDate"
+      | "address"
+      | "hireDate"
+      | "reportsTo"
+      | "homePhone"
+      | "notes"
+      | "city"
+      | "postalCode"
+      | "country"
+    >
+  >;
+};
+
 export type GetEmployeesQueryVariables = {};
 
 export type GetEmployeesQuery = { __typename?: "NorthWindQuery" } & {
@@ -816,6 +847,36 @@ export class GetProductsTableGQL extends Apollo.Query<
   GetProductsTableQueryVariables
 > {
   document = GetProductsTableDocument;
+}
+export const FindEmployeePerIdDocument = gql`
+  query FindEmployeePerId($id: ID!) {
+    employee(id: $id) {
+      employeeId
+      title
+      titleOfCourtesy
+      firstName
+      lastName
+      birthDate
+      address
+      hireDate
+      reportsTo
+      homePhone
+      notes
+      city
+      postalCode
+      country
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: "root"
+})
+export class FindEmployeePerIdGQL extends Apollo.Query<
+  FindEmployeePerIdQuery,
+  FindEmployeePerIdQueryVariables
+> {
+  document = FindEmployeePerIdDocument;
 }
 export const GetEmployeesDocument = gql`
   query GetEmployees {
