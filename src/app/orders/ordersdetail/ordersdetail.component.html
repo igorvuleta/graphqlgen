@@ -1,22 +1,22 @@
 <section fxLayout="row wrap" fxLayoutAlign="center center">
   <mat-card fxFlex="500px" fxFlex.xs="100%">
-    <mat-card-title>Details for {{order.orderId}}</mat-card-title>
+    <mat-card-title>Details for order {{order.orderId}}</mat-card-title>
     <mat-card-content>
       <div fxLayout="column wrap" fxLayoutGap="40px">
         <div fxLayout="row wrap" fxFlex>
-          <div fxFlex>Customer ID:</div>
+          <div fxFlex>Order ID:</div>
           <div fxFlex>{{ order.orderId}}</div>
         </div>
         <div fxLayout="row wrap" fxFlex>
-          <div fxFlex>Customer Name: </div>
+          <div fxFlex>Order Date: </div>
           <div fxFlex>{{ order.orderDate }}</div>
         </div>
         <div fxLayout="row wrap" fxFlex>
-          <div fxFlex>Customer Contact Title: </div>
+          <div fxFlex>Required order date: </div>
           <div fxFlex>{{ order.requiredDate }}</div>
         </div>
         <div fxLayout="row wrap" fxFlex>
-          <div fxFlex>Customer Address </div>
+          <div fxFlex>Shipped Date </div>
           <div fxFlex>{{ order.shippedDate }}</div>
         </div>
         <div fxLayout="row wrap" fxFlex>
@@ -24,19 +24,19 @@
           <div fxFlex>{{ order.shipName }}</div>
         </div>
         <div fxLayout="row wrap" fxFlex>
-          <div fxFlex>Customer City: </div>
+          <div fxFlex>Ship Address: </div>
           <div fxFlex>{{ order.shipAddress }}</div>
         </div>
         <div fxLayout="row wrap" fxFlex>
-          <div fxFlex>Customer PostalCode: </div>
+          <div fxFlex>Ship City: </div>
           <div fxFlex>{{ order.shipCity }}</div>
         </div>
         <div fxLayout="row wrap" fxFlex>
-          <div fxFlex>Customer Fax: </div>
+          <div fxFlex>Ship Country: </div>
           <div fxFlex>{{ order.shipCountry }}</div>
         </div>
         <div fxLayout="row wrap" fxFlex>
-          <div fxFlex>Customer Phone: </div>
+          <div fxFlex>Ship Postal Code: </div>
           <div fxFlex>{{ order.shipPostalCode }}</div>
         </div>
       </div>
