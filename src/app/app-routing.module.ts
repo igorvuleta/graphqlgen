@@ -16,6 +16,7 @@ import { TerritoriesComponent } from './territories/territories.component';
 import { CategoriesDetailsComponent } from './categories/categories-details/categories-details.component';
 import { CustomerdetailComponent } from './customers/customerdetail/customerdetail.component';
 import { EmployeedetailsComponent } from './employees/employeedetails/employeedetails.component';
+import { SuppliersdetailsComponent } from './suppliers/suppliersdetails/suppliersdetails.component';
 
 
 const routes: Routes = [
@@ -34,6 +35,7 @@ const routes: Routes = [
   {path:'categories/details/:id', component:CategoriesDetailsComponent},
   {path:'customers/details/:id', component:CustomerdetailComponent},
   {path:'employees/details/:id', component:EmployeedetailsComponent},
+  {path:'suppliers/details/:id', component:SuppliersdetailsComponent}
 
 ];
 

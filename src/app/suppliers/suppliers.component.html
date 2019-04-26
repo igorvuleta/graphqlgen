@@ -30,7 +30,7 @@
 
   <ng-container matColumnDef="Details">
     <th mat-header-cell *matHeaderCellDef>Details</th>
-    <td mat-cell *matCellDef="let supplier">
+    <td mat-cell *matCellDef="let supplier" (click)="redirectToDetails(supplier.supplierId)">
       <button mat-icon-button color="primary">
         <mat-icon class="mat-18">info</mat-icon>
       </button>

@@ -1,0 +1,53 @@
+<section fxLayout="row wrap" fxLayoutAlign="center center">
+  <mat-card fxFlex="500px" fxFlex.xs="100%">
+    <mat-card-title>Details for {{ supplier.companyName }}</mat-card-title>
+    <mat-card-content>
+      <div fxLayout="column wrap" fxLayoutGap="40px">
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Supplier ID:</div>
+          <div fxFlex>{{ supplier.supplierId }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Supplier Name:</div>
+          <div fxFlex>{{ supplier.companyName }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Supplier Contact:</div>
+          <div fxFlex>{{ supplier.contactName }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Supplier Contact Title</div>
+          <div fxFlex>{{ supplier.contactTitle }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Supplier address:</div>
+          <div fxFlex>{{ supplier.address }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Supplier City:</div>
+          <div fxFlex>{{ supplier.city }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Supplier Country:</div>
+          <div fxFlex>{{ supplier.country }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Supplier Postal Code:</div>
+          <div fxFlex>{{ supplier.postalCode }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Supplier Fax:</div>
+          <div fxFlex>{{ supplier.fax }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Supplier Phone:</div>
+          <div fxFlex>{{ supplier.phone }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Homepage:</div>
+          <div fxFlex>{{ supplier.homePage }}</div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</section>

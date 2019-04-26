@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {map} from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { GetSuppliersGQL } from 'src/generated/graphql';
+import { Router } from '@angular/router';
 
 
 
@@ -20,7 +21,7 @@ export class SuppliersComponent implements OnInit {
 
 
 
-  constructor(private getSuppliers: GetSuppliersGQL) { }
+  constructor(private getSuppliers: GetSuppliersGQL, private router:Router) { }
 
   ngOnInit() {
     
@@ -28,5 +29,10 @@ export class SuppliersComponent implements OnInit {
       
    
   }
+  public redirectToDetails = (supplierId: string) => {
+    let url: string = `/suppliers/details/${supplierId}`;
+    this.router.navigate([url]);
+    console.log("did I navigate?");
+  };
 
 }

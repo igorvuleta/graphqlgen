@@ -109,6 +109,7 @@ export type NorthWindQuery = {
   employees?: Maybe<Array<Maybe<EmployeesType>>>;
   /** This table holds employee territories and it is related to the employee table! */
   employeesTerritories?: Maybe<Array<Maybe<EmployeeTerritoriesType>>>;
+  order?: Maybe<OrdersType>;
   /** This table holds all order details, and is in a relationship with the products! */
   orderDetails?: Maybe<Array<Maybe<OrderDetailsType>>>;
   /** This table holds all orders and is in relationship with order details and customers tables! */
@@ -136,6 +137,10 @@ export type NorthWindQueryCustomerArgs = {
 };
 
 export type NorthWindQueryEmployeeArgs = {
+  id: Scalars["ID"];
+};
+
+export type NorthWindQueryOrderArgs = {
   id: Scalars["ID"];
 };
 
@@ -676,6 +681,29 @@ export type GetSuppliersQuery = { __typename?: "NorthWindQuery" } & {
   >;
 };
 
+export type FindSupplierPerIdQueryVariables = {
+  id: Scalars["ID"];
+};
+
+export type FindSupplierPerIdQuery = { __typename?: "NorthWindQuery" } & {
+  supplier: Maybe<
+    { __typename?: "SupplierType" } & Pick<
+      SupplierType,
+      | "supplierId"
+      | "companyName"
+      | "contactName"
+      | "contactTitle"
+      | "address"
+      | "city"
+      | "country"
+      | "postalCode"
+      | "fax"
+      | "phone"
+      | "homePage"
+    >
+  >;
+};
+
 export type GetTerritoriesQueryVariables = {};
 
 export type GetTerritoriesQuery = { __typename?: "NorthWindQuery" } & {
@@ -1041,6 +1069,33 @@ export class GetSuppliersGQL extends Apollo.Query<
   GetSuppliersQueryVariables
 > {
   document = GetSuppliersDocument;
+}
+export const FindSupplierPerIdDocument = gql`
+  query FindSupplierPerId($id: ID!) {
+    supplier(id: $id) {
+      supplierId
+      companyName
+      contactName
+      contactTitle
+      address
+      city
+      country
+      postalCode
+      fax
+      phone
+      homePage
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: "root"
+})
+export class FindSupplierPerIdGQL extends Apollo.Query<
+  FindSupplierPerIdQuery,
+  FindSupplierPerIdQueryVariables
+> {
+  document = FindSupplierPerIdDocument;
 }
 export const GetTerritoriesDocument = gql`
   query GetTerritories {

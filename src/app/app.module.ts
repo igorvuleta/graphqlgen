@@ -24,6 +24,7 @@ import { TerritoriesComponent } from './territories/territories.component';
 import { CategoriesDetailsComponent } from './categories/categories-details/categories-details.component';
 import { CustomerdetailComponent } from './customers/customerdetail/customerdetail.component';
 import { EmployeedetailsComponent } from './employees/employeedetails/employeedetails.component';
+import { SuppliersdetailsComponent } from './suppliers/suppliersdetails/suppliersdetails.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { EmployeedetailsComponent } from './employees/employeedetails/employeede
     TerritoriesComponent,
     CategoriesDetailsComponent,
     CustomerdetailComponent,
-    EmployeedetailsComponent
+    EmployeedetailsComponent,
+    SuppliersdetailsComponent
   ],
   imports: [
     BrowserModule,

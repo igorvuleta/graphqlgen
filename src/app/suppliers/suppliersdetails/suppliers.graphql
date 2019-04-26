@@ -1,0 +1,14 @@
+query FindSupplierPerId($id: ID!) {
+  supplier(id: $id) {
+    supplierId
+    companyName
+    contactTitle
+    address
+    city
+    country
+    postalCode
+    fax
+    phone
+    homePage
+  }
+}
