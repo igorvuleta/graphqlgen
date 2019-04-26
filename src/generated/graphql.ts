@@ -598,6 +598,28 @@ export type GetOrdersQuery = { __typename?: "NorthWindQuery" } & {
   >;
 };
 
+export type FindOrderPerIdQueryVariables = {
+  id: Scalars["ID"];
+};
+
+export type FindOrderPerIdQuery = { __typename?: "NorthWindQuery" } & {
+  order: Maybe<
+    { __typename?: "OrdersType" } & Pick<
+      OrdersType,
+      | "orderId"
+      | "orderDate"
+      | "requiredDate"
+      | "shippedDate"
+      | "shipName"
+      | "requiredDate"
+      | "shipAddress"
+      | "shipCity"
+      | "shipCountry"
+      | "shipPostalCode"
+    >
+  >;
+};
+
 export type GetProductsQueryVariables = {};
 
 export type GetProductsQuery = { __typename?: "NorthWindQuery" } & {
@@ -691,7 +713,6 @@ export type FindSupplierPerIdQuery = { __typename?: "NorthWindQuery" } & {
       SupplierType,
       | "supplierId"
       | "companyName"
-      | "contactName"
       | "contactTitle"
       | "address"
       | "city"
@@ -967,6 +988,32 @@ export class GetOrdersGQL extends Apollo.Query<
 > {
   document = GetOrdersDocument;
 }
+export const FindOrderPerIdDocument = gql`
+  query FindOrderPerId($id: ID!) {
+    order(id: $id) {
+      orderId
+      orderDate
+      requiredDate
+      shippedDate
+      shipName
+      requiredDate
+      shipAddress
+      shipCity
+      shipCountry
+      shipPostalCode
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: "root"
+})
+export class FindOrderPerIdGQL extends Apollo.Query<
+  FindOrderPerIdQuery,
+  FindOrderPerIdQueryVariables
+> {
+  document = FindOrderPerIdDocument;
+}
 export const GetProductsDocument = gql`
   query GetProducts {
     products {
@@ -1075,7 +1122,6 @@ export const FindSupplierPerIdDocument = gql`
     supplier(id: $id) {
       supplierId
       companyName
-      contactName
       contactTitle
       address
       city

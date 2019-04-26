@@ -1,0 +1,14 @@
+query FindOrderPerId($id: ID!) {
+  order(id: $id) {
+    orderId
+    orderDate
+    requiredDate
+    shippedDate
+    shipName
+    requiredDate
+    shipAddress
+    shipCity
+    shipCountry
+    shipPostalCode
+  }
+}

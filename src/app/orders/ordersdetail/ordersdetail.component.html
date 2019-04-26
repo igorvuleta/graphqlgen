@@ -1,0 +1,45 @@
+<section fxLayout="row wrap" fxLayoutAlign="center center">
+  <mat-card fxFlex="500px" fxFlex.xs="100%">
+    <mat-card-title>Details for {{order.orderId}}</mat-card-title>
+    <mat-card-content>
+      <div fxLayout="column wrap" fxLayoutGap="40px">
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Customer ID:</div>
+          <div fxFlex>{{ order.orderId}}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Customer Name: </div>
+          <div fxFlex>{{ order.orderDate }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Customer Contact Title: </div>
+          <div fxFlex>{{ order.requiredDate }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Customer Address </div>
+          <div fxFlex>{{ order.shippedDate }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Customer Country: </div>
+          <div fxFlex>{{ order.shipName }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Customer City: </div>
+          <div fxFlex>{{ order.shipAddress }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Customer PostalCode: </div>
+          <div fxFlex>{{ order.shipCity }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Customer Fax: </div>
+          <div fxFlex>{{ order.shipCountry }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>Customer Phone: </div>
+          <div fxFlex>{{ order.shipPostalCode }}</div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</section>
