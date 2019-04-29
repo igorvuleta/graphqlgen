@@ -1,6 +1,6 @@
 <section fxLayout="row wrap" fxLayoutAlign="center center">
   <mat-card fxFlex="500px" fxFlex.xs="100%">
-    <mat-card-title>Details for {{product.productName}}</mat-card-title>
+    <mat-card-title>Details for {{ product.productName }}</mat-card-title>
     <mat-card-content>
       <div fxLayout="column wrap" fxLayoutGap="40px">
         <div fxLayout="row wrap" fxFlex>
@@ -9,28 +9,35 @@
         </div>
 
         <div fxLayout="row wrap" fxFlex>
-          <div fxFlex>Product Name: </div>
+          <div fxFlex>Product Name:</div>
           <div fxFlex>{{ product.productName }}</div>
         </div>
         <div fxLayout="row wrap" fxFlex>
-          <div fxFlex>Product price: </div>
+          <div fxFlex>Product price:</div>
           <div fxFlex>{{ product.unitPrice }}</div>
         </div>
         <div fxLayout="row wrap" fxFlex>
-          <div fxFlex>Product in stock: </div>
+          <div fxFlex>Product in stock:</div>
           <div fxFlex>{{ product.unitsInStock }}</div>
         </div>
         <div fxLayout="row wrap" fxFlex>
-          <div fxFlex>Product on order: </div>
+          <div fxFlex>Product on order:</div>
           <div fxFlex>{{ product.unitsOnOrder }}</div>
         </div>
         <div fxLayout="row wrap" fxFlex>
-          <div fxFlex>Product quantitiy: </div>
+          <div fxFlex>Product quantitiy:</div>
           <div fxFlex>{{ product.quantityPerUnit }}</div>
         </div>
         <div fxLayout="row wrap" fxFlex>
-          <div fxFlex>Product discontinued: </div>
+          <div fxFlex>Product discontinued:</div>
           <div fxFlex>{{ product.discontinued }}</div>
+        </div>
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex>
+            <button mat-icon-button color="primary" (click)="deleteProduct()">
+              <mat-icon class="mat-18">delete</mat-icon>
+            </button>
+          </div>
         </div>
       </div>
     </mat-card-content>

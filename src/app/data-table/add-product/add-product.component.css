@@ -1,0 +1,14 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    color:#7B1FA2;
+  }
+  
+  .example-full-width {
+    width: 100%;
+    color:#7B1FA2;
+  }
+  form {
+      background-color:gray;
+  }

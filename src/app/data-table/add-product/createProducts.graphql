@@ -1,0 +1,12 @@
+mutation productsInput($product: productInput!) {
+          productInput(product: $product) {
+            productName
+            unitPrice
+            unitsInStock
+            unitsOnOrder
+            categoryId
+            discontinued
+            quantityPerUnit
+            reorderLevel
+          }
+        }

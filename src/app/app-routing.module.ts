@@ -18,6 +18,7 @@ import { CustomerdetailComponent } from './customers/customerdetail/customerdeta
 import { EmployeedetailsComponent } from './employees/employeedetails/employeedetails.component';
 import { SuppliersdetailsComponent } from './suppliers/suppliersdetails/suppliersdetails.component';
 import { OrdersdetailComponent } from './orders/ordersdetail/ordersdetail.component';
+import { AddProductComponent } from './data-table/add-product/add-product.component';
 
 
 const routes: Routes = [
@@ -37,7 +38,8 @@ const routes: Routes = [
   {path:'customers/details/:id', component:CustomerdetailComponent},
   {path:'employees/details/:id', component:EmployeedetailsComponent},
   {path:'suppliers/details/:id', component:SuppliersdetailsComponent},
-  {path:'orders/details/:id', component:OrdersdetailComponent}
+  {path:'orders/details/:id', component:OrdersdetailComponent},
+  {path:'products/add', component:AddProductComponent}
 
 ];
 

@@ -86,7 +86,12 @@ export type EmployeeTerritoriesType = {
 };
 
 export type NorthWindMutation = {
+  deleteProduct?: Maybe<ProductType>;
   productInput?: Maybe<ProductType>;
+};
+
+export type NorthWindMutationDeleteProductArgs = {
+  productId: Scalars["ID"];
 };
 
 export type NorthWindMutationProductInputArgs = {
@@ -181,6 +186,12 @@ export type OrdersType = {
 export type ProductInput = {
   productName: Scalars["String"];
   unitPrice?: Maybe<Scalars["Decimal"]>;
+  quantityPerUnit: Scalars["String"];
+  unitsInStock?: Maybe<Scalars["Int"]>;
+  unitsOnOrder?: Maybe<Scalars["Int"]>;
+  reorderLevel?: Maybe<Scalars["Int"]>;
+  discontinued?: Maybe<Scalars["Boolean"]>;
+  categoryId?: Maybe<Scalars["Int"]>;
 };
 
 export type ProductType = {
@@ -486,6 +497,36 @@ export type GetSchemaQuery = { __typename?: "NorthWindQuery" } & {
       >;
     };
   };
+};
+
+export type ProductsInputMutationVariables = {
+  product: ProductInput;
+};
+
+export type ProductsInputMutation = { __typename?: "NorthWindMutation" } & {
+  productInput: Maybe<
+    { __typename?: "ProductType" } & Pick<
+      ProductType,
+      | "productName"
+      | "unitPrice"
+      | "unitsInStock"
+      | "unitsOnOrder"
+      | "categoryId"
+      | "discontinued"
+      | "quantityPerUnit"
+      | "reorderLevel"
+    >
+  >;
+};
+
+export type DeleteProductMutationVariables = {
+  product: Scalars["ID"];
+};
+
+export type DeleteProductMutation = { __typename?: "NorthWindMutation" } & {
+  deleteProduct: Maybe<
+    { __typename?: "ProductType" } & Pick<ProductType, "productId">
+  >;
 };
 
 export type FindProductByIdQueryVariables = {
@@ -851,6 +892,47 @@ export class GetSchemaGQL extends Apollo.Query<
   GetSchemaQueryVariables
 > {
   document = GetSchemaDocument;
+}
+export const ProductsInputDocument = gql`
+  mutation productsInput($product: productInput!) {
+    productInput(product: $product) {
+      productName
+      unitPrice
+      unitsInStock
+      unitsOnOrder
+      categoryId
+      discontinued
+      quantityPerUnit
+      reorderLevel
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: "root"
+})
+export class ProductsInputGQL extends Apollo.Mutation<
+  ProductsInputMutation,
+  ProductsInputMutationVariables
+> {
+  document = ProductsInputDocument;
+}
+export const DeleteProductDocument = gql`
+  mutation deleteProduct($product: ID!) {
+    deleteProduct(productId: $product) {
+      productId
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: "root"
+})
+export class DeleteProductGQL extends Apollo.Mutation<
+  DeleteProductMutation,
+  DeleteProductMutationVariables
+> {
+  document = DeleteProductDocument;
 }
 export const FindProductByIdDocument = gql`
   query FindProductById($id: ID!) {

@@ -26,6 +26,10 @@ import { CustomerdetailComponent } from './customers/customerdetail/customerdeta
 import { EmployeedetailsComponent } from './employees/employeedetails/employeedetails.component';
 import { SuppliersdetailsComponent } from './suppliers/suppliersdetails/suppliersdetails.component';
 import { OrdersdetailComponent } from './orders/ordersdetail/ordersdetail.component';
+import { AddProductComponent } from './data-table/add-product/add-product.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -47,7 +51,8 @@ import { OrdersdetailComponent } from './orders/ordersdetail/ordersdetail.compon
     CustomerdetailComponent,
     EmployeedetailsComponent,
     SuppliersdetailsComponent,
-    OrdersdetailComponent
+    OrdersdetailComponent,
+    AddProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,7 +71,12 @@ import { OrdersdetailComponent } from './orders/ordersdetail/ordersdetail.compon
     MatMenuModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatInputModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule
+
 
   ],
   providers: [],

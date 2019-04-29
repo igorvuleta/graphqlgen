@@ -1,0 +1,30 @@
+<form class="example-form" [formGroup]="productForm">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Enter Product Name" formControlName="productName" />
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Enter Unit Price" formControlName="unitPrice" />
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Enter Units In Stock" formControlName="unitsInStock"  />
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Enter Units on Order" formControlName="unitsOnOrder" />
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Enter Category Id (1-8)" formControlName="categoryId" />
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="discontinued(true or false)" formControlName="discontinued" />
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="quantity Per Unit" formControlName="quantityPerUnit"/>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Reorder Level" formControlName="quantityPerUnit" />
+  </mat-form-field>
+ 
+</form>
+<button mat-button type="submit" (click)=createinputProduct()>
+  <mat-icon>add</mat-icon>
+</button>

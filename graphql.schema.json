@@ -1588,6 +1588,25 @@
         "description": null,
         "fields": [
           {
+            "name": "deleteProduct",
+            "description": null,
+            "args": [
+              {
+                "name": "productId",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": { "kind": "SCALAR", "name": "ID", "ofType": null }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": { "kind": "OBJECT", "name": "ProductType", "ofType": null },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "productInput",
             "description": null,
             "args": [
@@ -1636,6 +1655,46 @@
             "name": "unitPrice",
             "description": null,
             "type": { "kind": "SCALAR", "name": "Decimal", "ofType": null },
+            "defaultValue": "null"
+          },
+          {
+            "name": "quantityPerUnit",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": { "kind": "SCALAR", "name": "String", "ofType": null }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "unitsInStock",
+            "description": null,
+            "type": { "kind": "SCALAR", "name": "Int", "ofType": null },
+            "defaultValue": "null"
+          },
+          {
+            "name": "unitsOnOrder",
+            "description": null,
+            "type": { "kind": "SCALAR", "name": "Int", "ofType": null },
+            "defaultValue": "null"
+          },
+          {
+            "name": "reorderLevel",
+            "description": null,
+            "type": { "kind": "SCALAR", "name": "Int", "ofType": null },
+            "defaultValue": "null"
+          },
+          {
+            "name": "discontinued",
+            "description": null,
+            "type": { "kind": "SCALAR", "name": "Boolean", "ofType": null },
+            "defaultValue": "null"
+          },
+          {
+            "name": "categoryId",
+            "description": null,
+            "type": { "kind": "SCALAR", "name": "Int", "ofType": null },
             "defaultValue": "null"
           }
         ],
