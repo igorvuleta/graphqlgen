@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { map } from "rxjs/operators";
 import { Observable } from "rxjs";
 import { GetCategoriesGQL } from "./../../generated/graphql";
-import { ActivatedRoute, Router } from "@angular/router";
+import {  Router } from "@angular/router";
 
 @Component({
   selector: "app-categories",

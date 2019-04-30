@@ -90,7 +90,10 @@ export class ProductDetailsComponent implements OnInit {
         mutation: DeleteProduct,
         variables: {
           product: product
-        }
+        },
+        refetchQueries:[{
+          query: GetProductsTable
+        }]
       })
       .subscribe(({ data }) => {
         console.log(data);
