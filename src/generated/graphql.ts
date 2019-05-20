@@ -1,4 +1,7 @@
-type Maybe<T> = T | null;
+import gql from "graphql-tag";
+import { Injectable } from "@angular/core";
+import * as Apollo from "apollo-angular";
+export type Maybe<T> = T | null;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -6,11 +9,11 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  Decimal: any;
   /** The `Date` scalar type represents a year, month and day in accordance with the
    * [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
    */
   Date: any;
+  Decimal: any;
   /** The `DateTime` scalar type represents a date and time. `DateTime` expects
    * timestamps to be formatted in accordance with the
    * [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) standard.
@@ -28,49 +31,70 @@ export type Scalars = {
 };
 
 export type CategoriesType = {
+  __typename?: "CategoriesType";
   categoryId?: Maybe<Scalars["ID"]>;
   categoryName: Scalars["String"];
   description: Scalars["String"];
   picture?: Maybe<Array<Maybe<Scalars["String"]>>>;
-  products?: Maybe<Array<Maybe<ProductType>>>;
+  productList?: Maybe<Array<Maybe<ProductType>>>;
+};
+
+export type CategoriesTypeProductListArgs = {
+  id: Scalars["ID"];
+  filterName: Scalars["String"];
 };
 
 export type CustomerCustomerDemoType = {
-  customerId?: Maybe<CustomersType>;
+  __typename?: "CustomerCustomerDemoType";
+  customer?: Maybe<CustomersType>;
+  customerDemographic?: Maybe<CustomerDemographicsType>;
+  customerId?: Maybe<Scalars["ID"]>;
   customerTypeId?: Maybe<Scalars["ID"]>;
 };
 
 export type CustomerDemographicsType = {
+  __typename?: "CustomerDemographicsType";
+  customerCustomerDemoList?: Maybe<Array<Maybe<CustomerCustomerDemoType>>>;
   customerDesc: Scalars["String"];
-  customerTypeId?: Maybe<CustomerCustomerDemoType>;
+  customerTypeId?: Maybe<Scalars["ID"]>;
 };
 
 export type CustomersType = {
+  __typename?: "CustomersType";
   address: Scalars["String"];
   city: Scalars["String"];
   companyName: Scalars["String"];
   contactName: Scalars["String"];
   contactTitle: Scalars["String"];
   country: Scalars["String"];
+  customerCustomerDemoList?: Maybe<Array<Maybe<CustomerCustomerDemoType>>>;
   customerId?: Maybe<Scalars["ID"]>;
   fax?: Maybe<Scalars["String"]>;
+  orderList?: Maybe<Array<Maybe<OrdersType>>>;
   phone: Scalars["String"];
   postalCode: Scalars["String"];
   region?: Maybe<Scalars["String"]>;
 };
 
+export type CustomersTypeOrderListArgs = {
+  orderId: Scalars["ID"];
+};
+
 export type EmployeesType = {
+  __typename?: "EmployeesType";
   address: Scalars["String"];
   birthDate?: Maybe<Scalars["Date"]>;
   city: Scalars["String"];
   country: Scalars["String"];
   employeeId?: Maybe<Scalars["ID"]>;
+  employeeteritories?: Maybe<Array<Maybe<EmployeeTerritoriesType>>>;
   extension: Scalars["String"];
   firstName: Scalars["String"];
   hireDate?: Maybe<Scalars["Date"]>;
   homePhone: Scalars["String"];
   lastName: Scalars["String"];
   notes: Scalars["String"];
+  ordersList?: Maybe<Array<Maybe<OrdersType>>>;
   photo?: Maybe<Scalars["String"]>;
   photoPath: Scalars["String"];
   postalCode: Scalars["String"];
@@ -81,11 +105,15 @@ export type EmployeesType = {
 };
 
 export type EmployeeTerritoriesType = {
-  employeeId?: Maybe<EmployeesType>;
+  __typename?: "EmployeeTerritoriesType";
+  employee?: Maybe<EmployeesType>;
+  employeeId?: Maybe<Scalars["ID"]>;
+  territory?: Maybe<TerritoriesType>;
   territoryId: Scalars["String"];
 };
 
 export type NorthWindMutation = {
+  __typename?: "NorthWindMutation";
   deleteProduct?: Maybe<ProductType>;
   productInput?: Maybe<ProductType>;
 };
@@ -99,6 +127,7 @@ export type NorthWindMutationProductInputArgs = {
 };
 
 export type NorthWindQuery = {
+  __typename?: "NorthWindQuery";
   /** This table holds all Categories and is in a relationship with products! */
   categories?: Maybe<Array<Maybe<CategoriesType>>>;
   category?: Maybe<CategoriesType>;
@@ -112,9 +141,9 @@ export type NorthWindQuery = {
   employee?: Maybe<EmployeesType>;
   /** This table holds all records about employees and its not related to any other table! */
   employees?: Maybe<Array<Maybe<EmployeesType>>>;
-  /** This table holds employee territories and it is related to the employee table! */
-  employeesTerritories?: Maybe<Array<Maybe<EmployeeTerritoriesType>>>;
+  employeeTerritory?: Maybe<EmployeeTerritoriesType>;
   order?: Maybe<OrdersType>;
+  orderDetail?: Maybe<OrderDetailsType>;
   /** This table holds all order details, and is in a relationship with the products! */
   orderDetails?: Maybe<Array<Maybe<OrderDetailsType>>>;
   /** This table holds all orders and is in relationship with order details and customers tables! */
@@ -122,8 +151,10 @@ export type NorthWindQuery = {
   product?: Maybe<ProductType>;
   /** This table holds all products and product properties in relatioship with order details and suppliers! */
   products?: Maybe<Array<Maybe<ProductType>>>;
+  region?: Maybe<RegionType>;
   /** this table is holds region descriptions and it is not related to any other table in the database! */
   regions?: Maybe<Array<Maybe<RegionType>>>;
+  shipper?: Maybe<ShippersType>;
   /** This table holds all shippers and is in none relationship to other tables! */
   shippers?: Maybe<Array<Maybe<ShippersType>>>;
   supplier?: Maybe<SupplierType>;
@@ -131,10 +162,12 @@ export type NorthWindQuery = {
   suppliers?: Maybe<Array<Maybe<SupplierType>>>;
   /** Territories table holds the region and territories descriptions and it is realted to the region table! */
   territories?: Maybe<Array<Maybe<TerritoriesType>>>;
+  territory?: Maybe<TerritoriesType>;
 };
 
 export type NorthWindQueryCategoryArgs = {
   id: Scalars["ID"];
+  filter: Scalars["String"];
 };
 
 export type NorthWindQueryCustomerArgs = {
@@ -145,32 +178,64 @@ export type NorthWindQueryEmployeeArgs = {
   id: Scalars["ID"];
 };
 
+export type NorthWindQueryEmployeeTerritoryArgs = {
+  id: Scalars["ID"];
+};
+
 export type NorthWindQueryOrderArgs = {
+  id: Scalars["ID"];
+};
+
+export type NorthWindQueryOrderDetailArgs = {
   id: Scalars["ID"];
 };
 
 export type NorthWindQueryProductArgs = {
   id: Scalars["ID"];
+  filter: Scalars["String"];
+};
+
+export type NorthWindQueryRegionArgs = {
+  id: Scalars["ID"];
+};
+
+export type NorthWindQueryShipperArgs = {
+  id: Scalars["ID"];
 };
 
 export type NorthWindQuerySupplierArgs = {
   id: Scalars["ID"];
+  filterCity: Scalars["String"];
+};
+
+export type NorthWindQueryTerritoryArgs = {
+  id: Scalars["ID"];
 };
 
 export type OrderDetailsType = {
+  __typename?: "OrderDetailsType";
   discount: Scalars["Float"];
+  order?: Maybe<OrdersType>;
   orderId: Scalars["Int"];
-  productId?: Maybe<ProductType>;
+  product?: Maybe<ProductType>;
+  productId?: Maybe<Scalars["ID"]>;
   quantity?: Maybe<Scalars["Int"]>;
   unitPrice: Scalars["Decimal"];
 };
 
+export type OrderDetailsTypeOrderArgs = {
+  id: Scalars["Int"];
+};
+
 export type OrdersType = {
-  customerId?: Maybe<CustomersType>;
+  __typename?: "OrdersType";
+  customer?: Maybe<CustomersType>;
+  customerId?: Maybe<Scalars["ID"]>;
+  employee?: Maybe<EmployeesType>;
   employeeId?: Maybe<Scalars["ID"]>;
   freight?: Maybe<Scalars["Decimal"]>;
   orderDate?: Maybe<Scalars["Date"]>;
-  orderDetails?: Maybe<Array<Maybe<OrderDetailsType>>>;
+  orderDetailList?: Maybe<Array<Maybe<OrderDetailsType>>>;
   orderId: Scalars["Int"];
   requiredDate?: Maybe<Scalars["Date"]>;
   shipAddress: Scalars["String"];
@@ -181,6 +246,10 @@ export type OrdersType = {
   shipPostalCode: Scalars["String"];
   shipRegion: Scalars["String"];
   shipVia?: Maybe<Scalars["Int"]>;
+};
+
+export type OrdersTypeOrderDetailListArgs = {
+  orderId: Scalars["ID"];
 };
 
 export type ProductInput = {
@@ -195,33 +264,43 @@ export type ProductInput = {
 };
 
 export type ProductType = {
+  __typename?: "ProductType";
   categoryId?: Maybe<Scalars["Int"]>;
   discontinued: Scalars["Boolean"];
-  orderDetails?: Maybe<Array<Maybe<OrderDetailsType>>>;
+  orderDetailList?: Maybe<Array<Maybe<OrderDetailsType>>>;
   productId?: Maybe<Scalars["ID"]>;
   /** Product name */
   productName: Scalars["String"];
   quantityPerUnit: Scalars["String"];
   reorderLevel?: Maybe<Scalars["Int"]>;
+  supplier?: Maybe<SupplierType>;
   supplierId?: Maybe<Scalars["ID"]>;
-  suppliers?: Maybe<Array<Maybe<SupplierType>>>;
   unitPrice?: Maybe<Scalars["Decimal"]>;
   unitsInStock?: Maybe<Scalars["Int"]>;
   unitsOnOrder?: Maybe<Scalars["Int"]>;
 };
 
+export type ProductTypeOrderDetailListArgs = {
+  productId: Scalars["ID"];
+};
+
 export type RegionType = {
+  __typename?: "RegionType";
   regionDescription: Scalars["String"];
   regionId: Scalars["Int"];
+  territoriesList?: Maybe<Array<Maybe<TerritoriesType>>>;
 };
 
 export type ShippersType = {
+  __typename?: "ShippersType";
   companyName: Scalars["String"];
+  orders?: Maybe<Array<Maybe<OrdersType>>>;
   phone: Scalars["String"];
-  shipperId: Scalars["Int"];
+  shipperId?: Maybe<Scalars["ID"]>;
 };
 
 export type SupplierType = {
+  __typename?: "SupplierType";
   address: Scalars["String"];
   city: Scalars["String"];
   companyName: Scalars["String"];
@@ -232,15 +311,23 @@ export type SupplierType = {
   homePage?: Maybe<Scalars["String"]>;
   phone: Scalars["String"];
   postalCode: Scalars["String"];
-  products?: Maybe<Array<Maybe<ProductType>>>;
+  productList1?: Maybe<Array<Maybe<ProductType>>>;
   region?: Maybe<Scalars["String"]>;
   supplierId?: Maybe<Scalars["ID"]>;
 };
 
+export type SupplierTypeProductList1Args = {
+  id: Scalars["ID"];
+  filterName: Scalars["String"];
+};
+
 export type TerritoriesType = {
-  regionId?: Maybe<RegionType>;
+  __typename?: "TerritoriesType";
+  employeTerritoriesList?: Maybe<Array<Maybe<EmployeeTerritoriesType>>>;
+  region?: Maybe<RegionType>;
+  regionId?: Maybe<Scalars["ID"]>;
   territoryDescription: Scalars["String"];
-  territoryId: Scalars["String"];
+  territoryId?: Maybe<Scalars["ID"]>;
 };
 
 /** A Directive provides a way to describe alternate runtime execution and type validation behavior in a GraphQL document.
@@ -251,6 +338,7 @@ export type TerritoriesType = {
  * to the executor.
  */
 export type __Directive = {
+  __typename?: "__Directive";
   name: Scalars["String"];
   description?: Maybe<Scalars["String"]>;
   locations: Array<__DirectiveLocation>;
@@ -306,6 +394,7 @@ export enum __DirectiveLocation {
  * a JSON response as a string.
  */
 export type __EnumValue = {
+  __typename?: "__EnumValue";
   name: Scalars["String"];
   description?: Maybe<Scalars["String"]>;
   isDeprecated: Scalars["Boolean"];
@@ -316,6 +405,7 @@ export type __EnumValue = {
  * a name, potentially a list of arguments, and a return type.
  */
 export type __Field = {
+  __typename?: "__Field";
   name: Scalars["String"];
   description?: Maybe<Scalars["String"]>;
   args: Array<__InputValue>;
@@ -329,6 +419,7 @@ export type __Field = {
  * optionally a default value.
  */
 export type __InputValue = {
+  __typename?: "__InputValue";
   name: Scalars["String"];
   description?: Maybe<Scalars["String"]>;
   type: __Type;
@@ -341,6 +432,7 @@ export type __InputValue = {
  * query, mutation, and subscription operations.
  */
 export type __Schema = {
+  __typename?: "__Schema";
   /** A list of all types supported by this server. */
   types: Array<__Type>;
   /** The type that query operations will be rooted at. */
@@ -363,6 +455,7 @@ export type __Schema = {
  * possible at runtime. List and NonNull types compose other types.
  */
 export type __Type = {
+  __typename?: "__Type";
   kind: __TypeKind;
   name?: Maybe<Scalars["String"]>;
   description?: Maybe<Scalars["String"]>;
@@ -432,21 +525,6 @@ export type FindCategoryByIdQuery = { __typename?: "NorthWindQuery" } & {
   >;
 };
 
-export type GetCategoriesQueryVariables = {};
-
-export type GetCategoriesQuery = { __typename?: "NorthWindQuery" } & {
-  categories: Maybe<
-    Array<
-      Maybe<
-        { __typename?: "CategoriesType" } & Pick<
-          CategoriesType,
-          "categoryId" | "categoryName" | "description"
-        >
-      >
-    >
-  >;
-};
-
 export type FindCustomerPerIdQueryVariables = {
   id: Scalars["ID"];
 };
@@ -466,21 +544,6 @@ export type FindCustomerPerIdQuery = { __typename?: "NorthWindQuery" } & {
       | "postalCode"
       | "customerId"
       | "region"
-    >
-  >;
-};
-
-export type GetCustomersQueryVariables = {};
-
-export type GetCustomersQuery = { __typename?: "NorthWindQuery" } & {
-  customers: Maybe<
-    Array<
-      Maybe<
-        { __typename?: "CustomersType" } & Pick<
-          CustomersType,
-          "customerId" | "companyName" | "contactName" | "country" | "region"
-        >
-      >
     >
   >;
 };
@@ -781,9 +844,35 @@ export type GetTerritoriesQuery = { __typename?: "NorthWindQuery" } & {
   >;
 };
 
-import gql from "graphql-tag";
-import { Injectable } from "@angular/core";
-import * as Apollo from "apollo-angular";
+export type GetCategoriesQueryVariables = {};
+
+export type GetCategoriesQuery = { __typename?: "NorthWindQuery" } & {
+  categories: Maybe<
+    Array<
+      Maybe<
+        { __typename?: "CategoriesType" } & Pick<
+          CategoriesType,
+          "categoryId" | "categoryName" | "description"
+        >
+      >
+    >
+  >;
+};
+
+export type GetCustomersQueryVariables = {};
+
+export type GetCustomersQuery = { __typename?: "NorthWindQuery" } & {
+  customers: Maybe<
+    Array<
+      Maybe<
+        { __typename?: "CustomersType" } & Pick<
+          CustomersType,
+          "customerId" | "companyName" | "contactName" | "country" | "region"
+        >
+      >
+    >
+  >;
+};
 
 export const FindCategoryByIdDocument = gql`
   query FindCategoryById($id: ID!) {
@@ -803,25 +892,6 @@ export class FindCategoryByIdGQL extends Apollo.Query<
   FindCategoryByIdQueryVariables
 > {
   document = FindCategoryByIdDocument;
-}
-export const GetCategoriesDocument = gql`
-  query getCategories {
-    categories {
-      categoryId
-      categoryName
-      description
-    }
-  }
-`;
-
-@Injectable({
-  providedIn: "root"
-})
-export class GetCategoriesGQL extends Apollo.Query<
-  GetCategoriesQuery,
-  GetCategoriesQueryVariables
-> {
-  document = GetCategoriesDocument;
 }
 export const FindCustomerPerIdDocument = gql`
   query FindCustomerPerId($id: ID!) {
@@ -849,27 +919,6 @@ export class FindCustomerPerIdGQL extends Apollo.Query<
   FindCustomerPerIdQueryVariables
 > {
   document = FindCustomerPerIdDocument;
-}
-export const GetCustomersDocument = gql`
-  query getCustomers {
-    customers {
-      customerId
-      companyName
-      contactName
-      country
-      region
-    }
-  }
-`;
-
-@Injectable({
-  providedIn: "root"
-})
-export class GetCustomersGQL extends Apollo.Query<
-  GetCustomersQuery,
-  GetCustomersQueryVariables
-> {
-  document = GetCustomersDocument;
 }
 export const GetSchemaDocument = gql`
   query GetSchema {
@@ -1242,4 +1291,44 @@ export class GetTerritoriesGQL extends Apollo.Query<
   GetTerritoriesQueryVariables
 > {
   document = GetTerritoriesDocument;
+}
+export const GetCategoriesDocument = gql`
+  query getCategories {
+    categories {
+      categoryId
+      categoryName
+      description
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: "root"
+})
+export class GetCategoriesGQL extends Apollo.Query<
+  GetCategoriesQuery,
+  GetCategoriesQueryVariables
+> {
+  document = GetCategoriesDocument;
+}
+export const GetCustomersDocument = gql`
+  query getCustomers {
+    customers {
+      customerId
+      companyName
+      contactName
+      country
+      region
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: "root"
+})
+export class GetCustomersGQL extends Apollo.Query<
+  GetCustomersQuery,
+  GetCustomersQueryVariables
+> {
+  document = GetCustomersDocument;
 }

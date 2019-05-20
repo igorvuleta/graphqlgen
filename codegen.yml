@@ -1,5 +1,5 @@
 overwrite: true
-schema: "https://localhost:44372/graphql"
+schema: "http://localhost:58886/graphql"
 documents: "**/*.graphql"
 generates:
   src/generated/graphql.ts:
@@ -7,6 +7,7 @@ generates:
       - "typescript"
       - "typescript-operations"
       - "typescript-apollo-angular"
+
   ./graphql.schema.json:
     plugins:
       - "introspection"

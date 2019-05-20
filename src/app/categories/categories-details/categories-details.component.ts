@@ -2,21 +2,24 @@ import { Component, OnInit } from "@angular/core";
 import { Apollo, QueryRef } from "apollo-angular";
 
 import { ActivatedRoute } from "@angular/router";
-import { map } from "rxjs/operators";
-import { Observable } from "rxjs";
-import gql from 'graphql-tag';
-import { Category } from './category';
+import { map, pluck } from "rxjs/operators";
+import { Observable, Subscription } from "rxjs";
+import gql from "graphql-tag";
+import { Category } from "./category";
+import {
+  FindCategoryByIdGQL,
+  CategoriesType
+} from "./../../../generated/graphql";
 
-export const FindCategoryById = gql`
-  query FindCategoryById($id: ID!) {
-    category(id: $id) {
-      categoryId
-      categoryName
-      description
-    }
-  }
-`;
-
+// export const FindCategoryById = gql`
+//   query FindCategoryById($id: ID!) {
+//     category(id: $id) {
+//       categoryId
+//       categoryName
+//       description
+//     }
+//   }
+// `;
 
 @Component({
   selector: "app-categories-details",
@@ -24,15 +27,11 @@ export const FindCategoryById = gql`
   styleUrls: ["./categories-details.component.css"]
 })
 export class CategoriesDetailsComponent implements OnInit {
-  category: Category = {
-    categoryId:'',
-    categoryName:'',
-    description:''
-  }
-  private query: QueryRef<any>;
+  category: CategoriesType;
+
   constructor(
     private route: ActivatedRoute,
-    private apollo: Apollo
+    private findCategoryByIdGQL: FindCategoryByIdGQL
   ) {}
 
   ngOnInit() {
@@ -41,14 +40,10 @@ export class CategoriesDetailsComponent implements OnInit {
 
   getDetails() {
     const id: string = this.route.snapshot.params.id;
-   this.query = this.apollo.watchQuery({
-     query: FindCategoryById,
-     variables : {id: id}
 
-   });
-
-   this.query.valueChanges.subscribe(res => {
-     this.category = res.data.category;
-   })
+    this.findCategoryByIdGQL
+      .watch({ id: id })
+      .valueChanges.pipe(map(category => category.data.category))
+      .subscribe(data => (this.category = data));
   }
 }

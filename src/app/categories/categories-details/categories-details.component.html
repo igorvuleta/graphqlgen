@@ -1,20 +1,20 @@
 <section fxLayout="row wrap" fxLayoutAlign="center center">
   <mat-card fxFlex="500px" fxFlex.xs="100%">
-    <mat-card-title>Details for {{ category.categoryName }}</mat-card-title>
+    <mat-card-title>Details for {{ category?.categoryName }}</mat-card-title>
     <mat-card-content>
       <div fxLayout="column wrap" fxLayoutGap="40px">
         <div fxLayout="row wrap" fxFlex>
           <div fxFlex>Category ID:</div>
-          <div fxFlex>{{ category.categoryId }}</div>
+          <div fxFlex>{{ category?.categoryId  }}</div>
         </div>
 
         <div fxLayout="row wrap" fxFlex>
           <div fxFlex>Category Name:</div>
-          <div fxFlex>{{ category.categoryName }}</div>
+          <div fxFlex>{{ category?.categoryName }}</div>
         </div>
         <div fxLayout="row wrap" fxFlex>
           <div fxFlex>Category Description:</div>
-          <div fxFlex>{{ category.description }}</div>
+          <div fxFlex>{{ category?.description }}</div>
         </div>
       </div>
     </mat-card-content>

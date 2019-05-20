@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { map } from "rxjs/operators";
 import { Observable } from "rxjs";
-import { GetCategoriesGQL } from "./../../generated/graphql";
+import { GetCategoriesGQL, CategoriesType } from "./../../generated/graphql";
 import {  Router } from "@angular/router";
 
 @Component({
@@ -10,7 +10,7 @@ import {  Router } from "@angular/router";
   styleUrls: ["./categories.component.css"]
 })
 export class CategoriesComponent implements OnInit {
-  categories: Observable<any[]>;
+  categories: Observable<CategoriesType[]>;
   displayedColumns: string[] = [
     "ID",
     "Category Name",
